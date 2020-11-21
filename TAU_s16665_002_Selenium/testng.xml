@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Parallel Testing" parallel="tests">
+	<test name="x-kom Chrome testing">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.s16665.TAU_s16665_002_Selenium.XkomPageTest"/>
+		</classes>
+	</test>
+	<test name="x-kom Firefox testing">
+		<parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="com.s16665.TAU_s16665_002_Selenium.XkomPageTest"/>
+		</classes>
+	</test>
+	<test name="x-kom Opera testing">
+		<parameter name="browser" value="opera"></parameter>
+		<classes>
+			<class name="com.s16665.TAU_s16665_002_Selenium.XkomPageTest"/>
+		</classes>
+	</test>
+	<test name="trojmiasto Chrome testing">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.s16665.TAU_s16665_002_Selenium.TrjPageTest"/>
+		</classes>
+	</test>
+	<test name="trojmiasto Firefox testing">
+		<parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="com.s16665.TAU_s16665_002_Selenium.TrjPageTest"/>
+		</classes>
+	</test>
+	<test name="trojmiasto Opera testing">
+		<parameter name="browser" value="opera"></parameter>
+		<classes>
+			<class name="com.s16665.TAU_s16665_002_Selenium.TrjPageTest"/>
+		</classes>
+	</test>
+</suite>
