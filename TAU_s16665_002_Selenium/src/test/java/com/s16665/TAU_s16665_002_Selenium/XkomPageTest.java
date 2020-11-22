@@ -1,12 +1,5 @@
 package com.s16665.TAU_s16665_002_Selenium;
 
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.AfterEach;
-//import org.junit.jupiter.api.BeforeAll;
-//import org.junit.jupiter.api.BeforeEach;
-//import static org.junit.jupiter.api.Assertions.*;
-//import io.github.bonigarcia.wdm.WebDriverManager;
-
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -60,7 +53,7 @@ public class XkomPageTest {
     }
 
     @Test
-    public void AddAndRemoveItemFromTheCart() {
+    public void addItemToTheCart() {
         driver.navigate().to("https://www.x-kom.pl/");
 
         String shoppingItemName = "Logitech M590 Multi Device Silent grafitowy";
@@ -97,6 +90,8 @@ public class XkomPageTest {
         WebElement elButtonAddToCart =  driver.findElement(byButtonAddToCart);
         elButtonAddToCart.click();
 
+        pause(20);
+
         justWaitForVisibilityOf(byConfirmationMessage);
         Assert.assertEquals(driver.findElement(byConfirmationMessage).getText(), confirmationMessage);
 
@@ -104,7 +99,7 @@ public class XkomPageTest {
     }
 
     @Test
-    public void RedirectToLoginPage() {
+    public void redirectToLoginPage() {
         driver.navigate().to("https://www.x-kom.pl/");
 
         String pageTitle ="x-kom.pl - Sklep komputerowy";
@@ -136,9 +131,18 @@ public class XkomPageTest {
 
     void justWaitForVisibilityOf(By by) {
         WebElement el = driver.findElement(by);
-        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(el));
+        new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(el));
 
     }
+
+    void pause(Integer seconds){
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 
