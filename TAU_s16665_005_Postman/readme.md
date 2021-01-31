@@ -22,7 +22,7 @@ If Postman is entirely new thing for you, then check out the [official introduct
 
 ### Preparation
 
-I have already prepared my collection file that you can find [here](./TAU_s16665_005_Postman/collections/CoinPaprika.postman_collection.json). In the Postman use `Import` button (top left corner) and then drag the collection file to the `Import` window.
+I have already prepared my collection file that you can find [here](./collections/CoinPaprika.postman_collection.json). In the Postman use `Import` button (top left corner) and then drag the collection file to the `Import` window.
 
 The collection uses [CoinPaprika API](https://api.coinpaprika.com).
 
