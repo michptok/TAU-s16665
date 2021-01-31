@@ -1,7 +1,5 @@
 # [Postman](https://www.postman.com/) - as an API automation testing tool
 
----
-
 **Postman** is a robust tool for API automation testing & development. Postman has features that helps you create, send and manage HTTP requests and related tests. You can collaborate across your team.
 
 > This guide focuses on using Postman as an API automation testing tool, not on the Postman app itself!
