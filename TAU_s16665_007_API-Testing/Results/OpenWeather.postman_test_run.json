@@ -1,0 +1,172 @@
+{
+	"id": "14d1ff16-29da-4ada-b4b4-9ac499654676",
+	"name": "OpenWeather",
+	"timestamp": "2021-02-07T20:48:42.919Z",
+	"collection_id": "c014ebcf-6ba0-4d7d-82d5-629f7916138a",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 9,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "d9b32ece-0e0a-40f5-9877-ed1cfdccbfb5",
+			"name": "Bad request",
+			"url": "http://api.openweathermap.org/data/2.5/weather?appid=5d592bc36b324a3dfbc7c58842546c16",
+			"time": 124,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Check for no 200 code": true,
+				"Check for 400 code": true,
+				"Check if response contains proper messages": true
+			},
+			"testPassFailCounts": {
+				"Check for no 200 code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check for 400 code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check if response contains proper messages": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				124
+			],
+			"allTests": [
+				{
+					"Check for no 200 code": true,
+					"Check for 400 code": true,
+					"Check if response contains proper messages": true
+				}
+			]
+		},
+		{
+			"id": "eb99d400-3c92-4c3c-8b2b-dd333791cf6f",
+			"name": "Valid response content",
+			"url": "http://api.openweathermap.org/data/2.5/weather?appid=5d592bc36b324a3dfbc7c58842546c16&q=Warsaw",
+			"time": 48,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Check for 200 code": true,
+				"Check if reponse is json": true
+			},
+			"testPassFailCounts": {
+				"Check for 200 code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check if reponse is json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Check for 200 code": true,
+					"Check if reponse is json": true
+				}
+			]
+		},
+		{
+			"id": "3f85e4e1-73ac-4657-9eb3-b0454b385b70",
+			"name": "Request param -> Valid response value",
+			"url": "http://api.openweathermap.org/data/2.5/weather?appid=5d592bc36b324a3dfbc7c58842546c16&q=Warsaw",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Check for 200 code": true,
+				"Check if value is equal to requested param": true
+			},
+			"testPassFailCounts": {
+				"Check for 200 code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check if value is equal to requested param": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Check for 200 code": true,
+					"Check if value is equal to requested param": true
+				}
+			]
+		},
+		{
+			"id": "4357e7b7-f32b-42b9-968a-18e148cf9137",
+			"name": "Valid content -> Valid keys",
+			"url": "http://api.openweathermap.org/data/2.5/weather?appid=5d592bc36b324a3dfbc7c58842546c16&q=Warsaw",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Check for 200 code": true,
+				"Check if response has all keys": true
+			},
+			"testPassFailCounts": {
+				"Check for 200 code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check if response has all keys": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Check for 200 code": true,
+					"Check if response has all keys": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 263,
+	"collection": {
+		"requests": [
+			{
+				"id": "d9b32ece-0e0a-40f5-9877-ed1cfdccbfb5",
+				"method": "GET"
+			},
+			{
+				"id": "eb99d400-3c92-4c3c-8b2b-dd333791cf6f",
+				"method": "GET"
+			},
+			{
+				"id": "3f85e4e1-73ac-4657-9eb3-b0454b385b70",
+				"method": "GET"
+			},
+			{
+				"id": "4357e7b7-f32b-42b9-968a-18e148cf9137",
+				"method": "GET"
+			}
+		]
+	}
+}

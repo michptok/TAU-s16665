@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "c014ebcf-6ba0-4d7d-82d5-629f7916138a",
+		"name": "OpenWeather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bad request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check for no 200 code\", function () {\r",
+							"    pm.response.to.not.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check for 400 code\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response contains proper messages\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.cod).to.eql(\"400\");\r",
+							"    pm.expect(jsonData.message).to.eql(\"Nothing to geocode\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}weather?appid={{api_key}}",
+					"host": [
+						"{{api_url}}weather"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid response content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check for 200 code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if reponse is json\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.response.to.have.body;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}weather?appid={{api_key}}&q={{city}}",
+					"host": [
+						"{{api_url}}weather"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "q",
+							"value": "{{city}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request param -> Valid response value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const city = pm.collectionVariables.get(\"city\");\r",
+							"const country = pm.collectionVariables.get(\"country\");\r",
+							"\r",
+							"pm.test(\"Check for 200 code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if value is equal to requested param\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('name');\r",
+							"    pm.expect(jsonData.name).to.be.a('string');\r",
+							"    pm.expect(jsonData.name).to.eql(city);\r",
+							"\r",
+							"    pm.expect(jsonData).to.have.property('sys');\r",
+							"    pm.expect(jsonData.sys).to.have.property('country');\r",
+							"    pm.expect(jsonData.sys.country).to.be.a('string');\r",
+							"    pm.expect(jsonData.sys.country).to.eql(country);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}weather?appid={{api_key}}&q={{city}}",
+					"host": [
+						"{{api_url}}weather"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "q",
+							"value": "{{city}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid content -> Valid keys",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check for 200 code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response has all keys\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('object').that.has.all\r",
+							"        .keys('coord', 'weather', 'base', 'main', 'visibility', 'wind', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}weather?appid={{api_key}}&q={{city}}",
+					"host": [
+						"{{api_url}}weather"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "q",
+							"value": "{{city}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_url",
+			"value": "api.openweathermap.org/data/2.5/"
+		},
+		{
+			"key": "api_key",
+			"value": "5d592bc36b324a3dfbc7c58842546c16"
+		},
+		{
+			"key": "city",
+			"value": "Warsaw"
+		},
+		{
+			"key": "country",
+			"value": "PL"
+		}
+	]
+}
