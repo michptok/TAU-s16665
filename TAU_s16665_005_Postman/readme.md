@@ -1,7 +1,5 @@
 # [Postman](https://www.postman.com/) - as an API automation testing tool
 
----
-
 **Postman** is a robust tool for API automation testing & development. Postman has features that helps you create, send and manage HTTP requests and related tests. You can collaborate across your team.
 
 > This guide focuses on using Postman as an API automation testing tool, not on the Postman app itself!
@@ -24,7 +22,7 @@ If Postman is entirely new thing for you, then check out the [official introduct
 
 ### Preparation
 
-I have already prepared my collection file that you can find [here](./collections./CoinPaprika.postman_collection.json). In the Postman use `Import` button (top left corner) and then drag the collection file to the `Import` window.
+I have already prepared my collection file that you can find [here](./collections/CoinPaprika.postman_collection.json). In the Postman use `Import` button (top left corner) and then drag the collection file to the `Import` window.
 
 The collection uses [CoinPaprika API](https://api.coinpaprika.com).
 
